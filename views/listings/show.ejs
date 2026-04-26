@@ -1,0 +1,74 @@
+<% layout("/layouts/boilerplate.ejs")%>
+<body>
+    <div class="card card-show" style="width: 50rem">
+    <img src="<%=list[0].image%>" class="card-img-top" alt="LISTING IMAGE" height="600rem" width="50rem">
+    <br>
+    <div class="card-body" >
+        <h5 class="card-title"><%=list[0].title%></h5>
+        <br>
+        <p class="card-text"><%=list[0].description%></p>
+        <br>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Price : &#8377; <%=list[0].price.toLocaleString("en-IN")%>/night</li>
+        <li class="list-group-item">Location :- <%=list[0].location%></li>
+        <li class="list-group-item">Country :- <%=list[0].country%></li>
+    </ul>
+    <br>
+    <%if(currUser && currUser._id.equals(list[0].owner._id)){%>
+        <div class="card-body">
+            <form method="GET" action="/listings/<%=list[0]._id%>/edit">
+                <button class="btn btn-danger">Edit Card</button>
+            </form>
+            <br>
+            <form method="POST" action="/listings/<%=list[0]._id%>?_method=DELETE">
+                <button class="btn btn-dark">Delete The Listing</button>
+            </form>
+        </div>
+    <%}%>
+    <hr>
+    <div class="col-8 offset-3">
+    <h4>Leave a Review</h4>
+    <form action="/listings/<%=list[0]._id%>/reviews" method="post" class="mb-3 needs-validation" novalidate >
+        <div class="mb-3 mt-3 col-8">
+        <label for="rating" class="form-label">Rating</label>
+        <input type="range" class="form-range" min="1" max="5" id="rating" name="review[rating]" required/>
+        </div>
+        <div class="mb-3 mt-3">
+        <label for="comment" class="form-label">Comments</label>
+        <textarea name="review[comment]" class="form-control" id="comment" cols="30" rows="5" required></textarea>
+        <div class="invalid-feedback">Enter a valid comment</div>
+        </div>
+        <br>
+        <button class="btn btn-outline-success">Submit</button>
+        </form>
+        </div>
+        </div>
+        <hr>
+        <h4>ALL Reviews</h4>
+        <hr>
+        <%if(list[0].reviews.length=="0"){%>
+            <p>NO REVIEWS !</p>
+        <%}%>
+        <div class="row">
+        <%for(review of list[0].reviews){%>
+            <div class="card col-5 mb-3 ms-3">
+            <div class="card-body">
+                <h5 class="card-title"><%=review.author.username%></h5>
+                <p class="card-subtitle mb-2 text-body-secondary"><%=review.createdat.toString().split(" ")[4] %></p>
+                <p class="card-subtitle mb-2 text-body-secondary"><%=review.createdat.toString().split(" ").slice(0,4).join("-") %></p>
+                <br>
+                <h6 class="card-subtitle mb-2 text-body-secondary">Rating : <%=review.rating%></h6>
+                <br>
+                <p class="card-text"><%=review.comment%></p>
+                <%if(currUser && currUser._id.equals(review.author._id)){%>
+                    <form class="mb-3" method="POST" action="/listings/<%=list[0]._id%>/reviews/<%=review._id%>?_method=DELETE">
+                        <button class="btn btn-sm btn-dark">Delete</button>
+                    </form>
+                <%}%>
+            </div>
+            </div>
+        <%}%>
+        </div>
+</body>
+

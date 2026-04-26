@@ -1,0 +1,124 @@
+#symbol{
+    background-color: yellow;
+    border-radius: 10px 0px 0px 10px;
+    height: 38px;
+    padding-top: 5px;
+}
+body{
+    font-family: "Plus Jakarta Sans", sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.container-fluid{
+    flex: 1;
+}
+.navbar{
+    height: 5rem !important;
+    background-color: aliceblue !important;
+}
+.fa-map-location{
+    color: purple !important;
+    font-size: 2rem;
+}
+footer {
+    background-color: #111;
+    padding: 1.5rem 0;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.f-info {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+}
+
+/* Social Icons */
+.f-info-socials {
+    display: flex;
+    gap: 1rem;
+    font-size: 1.6rem;
+}
+
+.f-info-socials i {
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.f-info-socials i:hover {
+    color: #1da1f2;
+    transform: scale(1.1);
+}
+
+/* Company Text */
+.f-info-company {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* Footer Links */
+.f-info-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.f-info-links a {
+    color: #bbb;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.f-info-links a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    .f-info {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+}
+
+.card-show{
+    margin-left: 15% !important;
+    border: none !important;
+}
+.card-index{
+    border: 3px solid black !important;
+}
+.card{
+    border-radius: 1rem !important;
+    margin-bottom: 2rem;
+    padding: 2% !important;
+}
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+.card-body{
+    padding: 0% !important;
+}
+.card-text p{
+    font-weight: 400 !important;
+}
+.listing-link{
+    text-decoration: none;
+}
+.card-img-overlay{
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+}

@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/"><i class="fa-solid fa-map-location"></i></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/listings">All Listings</a>
+        <a class="nav-link" href="/listings/new">Add New Listing</a>
+      </div>
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      &nbsp;
+      <%if(currentPath=="/listings" || currentPath=="/search"){%>
+        <div class="col-4 offset-2 search-container position-relative">
+          <form class="symbol d-flex align-items-center" method="post" action="/search" >
+              <div id="symbol">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"
+                  class="search-icon feather feather-search">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              </div>
+              <input class="form-control search-input " type="search"
+                    placeholder="Search by location..." aria-label="Search" name="search">
+              <button class="btn btn-success btn-search ms-2" type="submit">Search</button>
+          </form>
+        </div>
+      <%}%>
+      <div class="navbar-nav ms-auto">
+        <%if(!currUser){%>
+          <a class="nav-link" href="/signup">SignUp</a>
+          <a class="nav-link" href="/login">Login</a>
+        <% } %>
+        <%if(currUser){%>
+          <a class="nav-link" href="/logout">Logout</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>
